@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-8">
+  <h1><%= @bookmark.topic.title %></h1>
+    <div class="container filler-height">
+      <div class="inner-wrapper">
+      <%= link_to "#{@bookmark.url}", bookmarks_show_path(@bookmark) %>
+      </div>
+
+    </div>
+    <%= link_to "Go back to Bookmarks", bookmarks_show_path %>
+  </div>
+</div>
