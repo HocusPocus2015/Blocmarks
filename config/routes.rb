@@ -1,26 +1,14 @@
 Rails.application.routes.draw do
-  get 'bookmarks/index'
+  resources :bookmarks
+  resources :topics
 
-  get 'bookmarks/show'
-
-  get 'bookmarks/new'
-
-  get 'bookmarks/edit'
-
-  get 'topics/index'
-
-  get 'topics/show'
-
-  get 'topics/new'
-
-  get 'topics/edit'
+  root to: "welcome#index"
 
   devise_for :users
 
-  # resources :users, only: [:update, :show, :index]
+  resources :users, only: [:show, :index]
   get "welcome/index"
-  get "users/index"
-  get "users/show"
+
 
 
 end

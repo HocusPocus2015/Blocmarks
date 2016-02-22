@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
     # @bookmarks = @topic.bookmarks
     # authorize @topic
 
-    @topic = Topic.includes(:bookmarks).find(params[:id])
+    @topic = Topic.includes(:bookmarks).find(params[:user_id])
   end
 
   def new
@@ -21,5 +21,5 @@ class TopicsController < ApplicationController
     def topic_params
       params.require(:topic).permit(:user_id, :title)
     end
-    
+
 end
