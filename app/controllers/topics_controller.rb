@@ -8,7 +8,9 @@ class TopicsController < ApplicationController
     # @bookmarks = @topic.bookmarks
     # authorize @topic
 
-    @topic = Topic.includes(:bookmarks).find(params[:user_id])
+    # @topic = Topic.includes(:bookmarks).find(params[:user_id])
+    @topic = Topic.includes(:bookmarks).find(params[:id])
+    @bookmarks = @topic.bookmarks 
   end
 
   def new
