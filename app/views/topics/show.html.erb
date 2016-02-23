@@ -1,0 +1,12 @@
+
+<h1><%= "#{@topic.title}"%></h1>
+
+<% @bookmarks.each do |bookmark| %>
+  <p><%= link_to "#{bookmark.url}", bookmark_path(bookmark) %>
+    <%= link_to 'Delete', @bookmark, method: :delete, class: 'btn btn-danger',
+      data: { confirm: 'You are about to delete this bookmark forever!'}%>
+    </p>
+    <% end %>
+    <% if current_user %>
+      <%= link_to "Create Bookmark", new_bookmark_path, class: 'btn btn-primary btn-large' %>
+    <% end %>

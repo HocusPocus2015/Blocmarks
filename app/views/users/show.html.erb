@@ -1,14 +1,9 @@
-<div class="container">
-  <ul class="nav nav-tabs">
-    <!-- <li><%#= link_to "Blocmarks", root_path %></li> -->
-      <div class="pull-right user-info">
-        <% if current_user %>
-          Hello <%= current_user.email %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign In", new_user_session_path %> or
-          <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
-      </div>
-   </ul>
+<h1>My Bookmarks</h1>
+<h1 class="text-center">All Bookmarks</h1>
 
- </div>
+  <% @bookmarks.each do |bookmark| %>
+    <p><%= link_to "#{bookmark.url}", bookmark_path(bookmark) %></p>
+  <% end %>
+  <% if current_user %>
+    <%= link_to "Create Bookmark", new_bookmark_path, class: 'btn btn-primary btn-large' %>
+  <% end %>
