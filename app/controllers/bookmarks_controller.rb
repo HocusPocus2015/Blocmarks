@@ -4,6 +4,7 @@ class BookmarksController < ApplicationController
   def index
     @bookmarks = Bookmark.all
     @topics = Topic.all
+
   end
 
   def show
@@ -39,10 +40,15 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def edit
+    @bookmark = Bookmark.find(params[:id])
+  end
+
+
   def destroy
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.destroy
-      redirect_to topics_path , flash[:notice] = "Bookmark has been deleted."
+      redirect_to topics_path, flash[:notice] = "Bookmark has been deleted."
     else
       redirect_to bookmark_path , flash[:error] = "Error, please try again."
     end
@@ -52,5 +58,6 @@ class BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:url)
   end
+
 
 end

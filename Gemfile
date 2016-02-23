@@ -29,3 +29,5 @@ source 'https://rubygems.org'
  gem 'devise'
  # Add bootstrap CSS framework to layouts
  gem 'bootstrap-sass'
+ # add fake data
+ gem 'faker'

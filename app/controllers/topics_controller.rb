@@ -10,8 +10,12 @@ class TopicsController < ApplicationController
 
     # @topic = Topic.includes(:bookmarks).find(params[:user_id])
     @topic = Topic.includes(:bookmarks).find(params[:id])
-    @bookmarks = @topic.bookmarks 
+    @bookmarks = @topic.bookmarks
   end
+
+
+
+
 
   def new
   end

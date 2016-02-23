@@ -1,10 +1,11 @@
 <h1 class="text-center">All Bookmarks</h1>
   <% @bookmarks.each do |bookmark| %>
-    <p><%= link_to "#{bookmark.url}", bookmark_path(bookmark) %>
-    <%#= link_to 'Edit', edit_bookmark_path(@bookmark.id), class: 'btn btn-success' %>
+    <p>
+    <!-- <span class='label label-default'><%="#{bookmark.topic_id}"%></span> -->
+    <%= link_to "#{bookmark.url}", bookmark_path(bookmark) %>
     <%= link_to 'Delete', @bookmark, method: :delete, class: 'btn btn-danger',
       data: { confirm: 'You are about to delete this bookmark forever!'}%>
-  
+     <!-- <%#= link_to 'Edit', edit_bookmark_path(@bookmark.id), class: 'btn btn-warning' %> -->
   </p>
   <% end %>
   <% if current_user %>
