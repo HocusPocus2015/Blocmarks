@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -8,7 +9,6 @@ class BookmarksController < ApplicationController
 
   def show
     @bookmark = Bookmark.find(params[:id])
-    #authorize @bookmark
   end
 
   def new
@@ -21,7 +21,7 @@ class BookmarksController < ApplicationController
       redirect_to bookmarks_path, notice: "Bookmark is saved."
     else
       flash[:error] = "Error, please try again."
-      render :new
+      render :back
     end
   end
 
@@ -39,12 +39,19 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def edit
+    @bookmark = Bookmark.find(params[:id])
+    @topic = Topic.find(params[:id])
+  end
+
   def destroy
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.destroy
-      redirect_to topics_path , flash[:notice] = "Bookmark has been deleted."
+      flash[:notice] = "Bookmark has been deleted."
+      redirect_to :back
     else
-      redirect_to bookmark_path , flash[:error] = "Error, please try again."
+      flash[:error] = "Error, please try again."
+      redirect_to :back
     end
   end
 
@@ -52,5 +59,4 @@ class BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:url)
   end
-
 end

@@ -1,7 +1,8 @@
 <h1 class="text-center">Search by topics</h1>
+<% if current_user %>
+<%= link_to "Create Bookmark", new_bookmark_path(:topic_id), class: 'btn btn-primary btn-large' %>
+<% end %>
+
 <% @topics.each do |topic| %>
-  		<p><%= link_to "#{topic.title}", topic_path(topic) %></p>
-	<% end %>
-  	<% if current_user %>
-  		<%= link_to "Create Bookmark", new_bookmark_path(:topic_id), class: 'btn btn-primary btn-large' %>
-  	<% end %>
+  <p><%= link_to "#{topic.title}", topic_path(topic) %></p>
+<% end %>

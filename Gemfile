@@ -12,6 +12,8 @@ source 'https://rubygems.org'
  # #2
  group :development do
    gem 'sqlite3'
+  #database visulaisation
+    gem 'rails_db'
  end
 
  # Use SCSS for stylesheets
@@ -29,3 +31,7 @@ source 'https://rubygems.org'
  gem 'devise'
  # Add bootstrap CSS framework to layouts
  gem 'bootstrap-sass'
+ # add fake data
+ gem 'faker'
+ #authorization gem
+ gem 'pundit'
