@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -48,9 +49,11 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.destroy
-      redirect_to topics_path, flash[:notice] = "Bookmark has been deleted."
+      flash[:notice] = "Bookmark has been deleted."
+      redirect_to :back
     else
-      redirect_to bookmark_path , flash[:error] = "Error, please try again."
+      flash[:error] = "Error, please try again."
+      redirect_to :back
     end
   end
 
