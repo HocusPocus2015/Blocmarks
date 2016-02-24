@@ -7,7 +7,6 @@ class BookmarkPolicy < ApplicationPolicy
   end
 
   def destroy?
-    # authorize @bookmark
     user.present? && (bookmark.topic.user == user)
   end
 

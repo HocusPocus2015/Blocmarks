@@ -5,12 +5,10 @@ class BookmarksController < ApplicationController
   def index
     @bookmarks = Bookmark.all
     @topics = Topic.all
-
   end
 
   def show
     @bookmark = Bookmark.find(params[:id])
-    #authorize @bookmark
   end
 
   def new
@@ -46,7 +44,6 @@ class BookmarksController < ApplicationController
     @topic = Topic.find(params[:id])
   end
 
-
   def destroy
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.destroy
@@ -62,6 +59,4 @@ class BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:url)
   end
-
-
 end

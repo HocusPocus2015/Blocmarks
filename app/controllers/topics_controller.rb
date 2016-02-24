@@ -4,18 +4,9 @@ class TopicsController < ApplicationController
   end
 
   def show
-    # @topic = Topic.find(params[:id])
-    # @bookmarks = @topic.bookmarks
-    # authorize @topic
-
-    # @topic = Topic.includes(:bookmarks).find(params[:user_id])
     @topic = Topic.includes(:bookmarks).find(params[:id])
     @bookmarks = @topic.bookmarks
   end
-
-
-
-
 
   def new
   end
@@ -24,8 +15,8 @@ class TopicsController < ApplicationController
   end
 
   private
-    def topic_params
-      params.require(:topic).permit(:user_id, :title)
-    end
+  def topic_params
+    params.require(:topic).permit(:user_id, :title)
+  end
 
 end
