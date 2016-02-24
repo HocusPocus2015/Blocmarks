@@ -23,7 +23,7 @@ class BookmarksController < ApplicationController
       redirect_to bookmarks_path, notice: "Bookmark is saved."
     else
       flash[:error] = "Error, please try again."
-      render :new
+      render :back
     end
   end
 
@@ -43,6 +43,7 @@ class BookmarksController < ApplicationController
 
   def edit
     @bookmark = Bookmark.find(params[:id])
+    @topic = Topic.find(params[:id])
   end
 
 

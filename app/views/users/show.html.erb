@@ -1,9 +1,9 @@
-<h1>My Bookmarks</h1>
-<h1 class="text-center">All Bookmarks</h1>
+<h1 class="text-center">My Bookmarks</h1>
 
-  <% @bookmarks.each do |bookmark| %>
-    <p><%= link_to "#{bookmark.url}", bookmark_path(bookmark) %></p>
-  <% end %>
-  <% if current_user %>
-    <%= link_to "Create Bookmark", new_bookmark_path, class: 'btn btn-primary btn-large' %>
-  <% end %>
+<% if current_user %>
+  <%= link_to "Create Bookmark", new_bookmark_path, class: 'btn btn-primary btn-large' %>
+<% end %>
+
+<% @bookmarks.each do |bookmark| %>
+  <p><%= link_to "#{bookmark.url}", bookmark_path(bookmark) %></p>
+<% end %>

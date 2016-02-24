@@ -10,4 +10,8 @@ class BookmarkPolicy < ApplicationPolicy
     # authorize @bookmark
     user.present? && (bookmark.topic.user == user)
   end
+
+  def update?
+    user.present? && (bookmark.topic.user == user)
+  end
 end
