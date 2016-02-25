@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :incoming, only: [:create]
-  
+
   root to: "welcome#index"
 
   get "welcome/index"

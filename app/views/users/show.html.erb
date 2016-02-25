@@ -1,9 +1,25 @@
 <h1 class="text-center">My Bookmarks</h1>
 
-<% if current_user %>
-  <%= link_to "Create Bookmark", new_bookmark_path, class: 'btn btn-primary btn-large' %>
+<% @bookmarks.each do |bookmark| %>
+  <div class="panel panel-default">
+      <div class="panel-body">
+        <%= link_to "#{bookmark.url}", bookmark_path(bookmark)%>
+        <% if policy(bookmark).destroy? %>
+          <%= link_to 'Edit', edit_bookmark_path(bookmark), class: 'label label-warning' %>
+          <%= link_to 'Delete', bookmark, method: :delete, class: 'label label-danger',
+        data: { confirm: 'You are about to delete this bookmark forever!'}%>
+        <% end %>
+      </div>
+  </div>
 <% end %>
 
-<% @bookmarks.each do |bookmark| %>
-  <p><%= link_to "#{bookmark.url}", bookmark_path(bookmark) %></p>
+<h1 class="text-center">Liked Bookmarks</h1>
+
+<% @likes.each do |like| %>
+<%= render partial: 'likes/like', locals: { bookmark: like.bookmark } %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p><%= link_to "#{like.bookmark.url}", bookmark_path(like.bookmark) %></p>
+    </div>
+  </div>
 <% end %>
