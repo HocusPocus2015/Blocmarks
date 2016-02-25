@@ -4,15 +4,17 @@
   <%= link_to "Create Bookmark", new_bookmark_path, class: 'btn btn-primary btn-large' %>
 <% end %>
 
+
 <% @bookmarks.each do |bookmark| %>
-  <p>
-    <!-- <span class='label label-default'><%#="#{bookmark.topic_id}"%></span> -->
-    <%= link_to "#{bookmark.url}", bookmark_path(bookmark) %>
-    <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
-    <% if policy(bookmark).destroy? %>
-      <%= link_to 'Edit', edit_bookmark_path(bookmark), class: 'btn btn-warning' %>
-      <%= link_to 'Delete', bookmark, method: :delete, class: 'btn btn-danger',
+  <%= render partial: 'likes/like', locals: { bookmark: bookmark }%>
+  <div class="panel panel-default">
+      <div class="panel-body">
+        <%= link_to "#{bookmark.url}", bookmark_path(bookmark)%>
+        <% if policy(bookmark).destroy? %>
+          <%= link_to 'Edit', edit_bookmark_path(bookmark), class: 'label label-warning' %>
+          <%= link_to 'Delete', bookmark, method: :delete, class: 'label label-danger',
         data: { confirm: 'You are about to delete this bookmark forever!'}%>
-    <% end %>
-  </p>
+        <% end %>
+      </div>
+  </div>
 <% end %>

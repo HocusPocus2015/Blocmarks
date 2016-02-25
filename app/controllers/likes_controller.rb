@@ -9,9 +9,8 @@ class LikesController < ApplicationController
   def create
     @bookmark = Bookmark.find(params[:bookmark_id])
     like = current_user.likes.build(bookmark: @bookmark)
-    if @like.save
+    if like.save
       redirect_to bookmarks_path
-      flash[:notice:] = "You liked it!"
     else
       redirect_to bookmarks_path
       flash[:notice] = "Error, please try again."
@@ -21,9 +20,8 @@ class LikesController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:bookmark_id])
     like = current_user.likes.find(params[:id])
-    if @like.destroy
+    if like.destroy
       redirect_to bookmarks_path
-      flash[:notice] = "You changed your mind."
     else
       redirect_to bookmarks_path
       flash[:notice] = "Error, please try again"
