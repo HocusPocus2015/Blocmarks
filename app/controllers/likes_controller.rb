@@ -2,28 +2,31 @@ class LikesController < ApplicationController
 
   def index
   end
-  
+
   def new
   end
 
   def create
     @bookmark = Bookmark.find(params[:bookmark_id])
-    @like = Like.new
-    @like.user = current_user
-    @like.bookmark = @bookmark
+    like = current_user.likes.build(bookmark: @bookmark)
     if @like.save
-      redirect_to bookmarks_path , notice: "You liked it!"
+      redirect_to bookmarks_path
+      flash[:notice:] = "You liked it!"
     else
-      redirect_to bookmarks_path , notice: "Error, please try again."
+      redirect_to bookmarks_path
+      flash[:notice] = "Error, please try again."
     end
   end
 
   def destroy
-    @like = Like.find( params[:id] )
+    @bookmark = Bookmark.find(params[:bookmark_id])
+    like = current_user.likes.find(params[:id])
     if @like.destroy
-      redirect_to bookmarks_path , notice: "You changed your mind."
+      redirect_to bookmarks_path
+      flash[:notice] = "You changed your mind."
     else
-      redirect_to bookmarks_path , notice: "Error, please try again"
+      redirect_to bookmarks_path
+      flash[:notice] = "Error, please try again"
     end
   end
 end
