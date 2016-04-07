@@ -1,5 +1,15 @@
 <h1><%= "#{@topic.title}"%></h1>
 
 <% @bookmarks.each do |bookmark| %>
-  <p><%= link_to "#{bookmark.url}", bookmark_path(bookmark) %></p>
+  <%= render partial: 'likes/like', locals: { bookmark: bookmark }%>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p><%= link_to "#{bookmark.url}", bookmark_path(bookmark) %></p>
+      <% if policy(bookmark).destroy? %>
+        <%= link_to 'Edit', edit_bookmark_path(bookmark), class: 'label label-warning' %>
+        <%= link_to 'Delete', bookmark, method: :delete, class: 'label label-danger',
+          data: { confirm: 'You are about to delete this bookmark forever!'}%>
+      <% end %>
+    </div>
+  </div>
 <% end %>

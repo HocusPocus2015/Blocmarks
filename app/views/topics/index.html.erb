@@ -4,5 +4,9 @@
 <% end %>
 
 <% @topics.each do |topic| %>
-  <p><%= link_to "#{topic.title}", topic_path(topic) %></p>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p><%= link_to "#{topic.title}", topic_path(topic) %></p>
+    </div>
+  </div>
 <% end %>

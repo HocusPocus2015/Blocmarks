@@ -7,10 +7,11 @@ class BookmarkPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present? && (bookmark.topic.user == user)
+    user.present? && (bookmark.user == user)
   end
 
   def update?
-    user.present? && (bookmark.topic.user == user)
+    # bookmark.user == user
+    true
   end
 end

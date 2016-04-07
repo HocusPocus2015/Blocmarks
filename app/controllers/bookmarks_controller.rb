@@ -18,7 +18,7 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.update_attributes(bookmark_params)
-      redirect_to bookmarks_path, notice: "Bookmark is saved."
+      redirect_to bookmarks_path
     else
       flash[:error] = "Error, please try again."
       render :back
@@ -47,7 +47,7 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.destroy
-      flash[:notice] = "Bookmark has been deleted."
+      # flash[:notice] = "Bookmark has been deleted."
       redirect_to :back
     else
       flash[:error] = "Error, please try again."
