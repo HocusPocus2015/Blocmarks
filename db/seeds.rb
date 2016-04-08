@@ -9,16 +9,16 @@ require 'faker'
 
 # user 1
 example1 = User.new(
-  email: 'alicesuckling@live.co.uk',
-  password: 'Test1234',
+  email: 'example@bloc.co.uk',
+  password: 'Test1234'
 )
 example1.save
 
-# user 2
 example2 = User.new(
   email: 'secondexample@bloc.co.uk',
   password: 'Test1234'
 )
+
 example2.save
 
 users = User.all

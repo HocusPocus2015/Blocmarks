@@ -1,5 +1,7 @@
 class LikesController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
   end
 
@@ -26,5 +28,11 @@ class LikesController < ApplicationController
       redirect_to bookmarks_path
       flash[:notice] = "Error, please try again"
     end
+  end
+
+
+
+  def liked(bookmark)
+    likes.where(bookmark_id: bookmark.id).first
   end
 end

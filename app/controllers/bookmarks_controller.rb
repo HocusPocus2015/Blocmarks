@@ -1,6 +1,6 @@
 class BookmarksController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
 
   def index
     @bookmarks = Bookmark.all
@@ -41,7 +41,7 @@ class BookmarksController < ApplicationController
 
   def edit
     @bookmark = Bookmark.find(params[:id])
-    @topic = Topic.find(params[:id])
+    # @topic = Topic.find(params[:id])
   end
 
   def destroy
